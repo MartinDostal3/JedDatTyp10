@@ -30,7 +30,7 @@ namespace JedDatTyp10
 
             }
 
-            int soucet = 0;
+            int soucet = 0;           
             for(int i = 0; i < listBox1.Items.Count; i++)
             {
 
@@ -44,7 +44,27 @@ namespace JedDatTyp10
                     }
                     
                 }
+            }
 
+            bool obsahuje = false;
+            int pocet = 0;
+            for (int i =0; i <listBox1.Items.Count && !obsahuje;i++)
+            {
+                char znak = char.Parse(listBox1.Items[i].ToString());
+                if (checkBox2.Checked)
+                {
+                    if(char.IsUpper(znak))
+                    {
+                        ++pocet;
+                        if(pocet>=3)
+                        {
+                            obsahuje = true;
+                        }
+
+                    }
+
+
+                }
 
             }
             if(checkBox1.Checked)
@@ -52,8 +72,27 @@ namespace JedDatTyp10
                 MessageBox.Show("Soucet je: " + soucet);
             }
 
+            if(checkBox2.Checked)
+            {
+                if(obsahuje)
+                {
+                    MessageBox.Show("Ano, posloupnost obsahuje tři velká písmena");
+                }
+                else
+                {
+                    MessageBox.Show("Ne, posloupnost neobsahuje tři velká písmena");
+                }
+
+
+            }
+
             
 
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }
